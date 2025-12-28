@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     parser.add_argument("-tsmd", "--target_shape_mask_dir", default="./data/target_imgs/s.png", type=str)
 
-    parser.add_argument("-sc", "--shape_class", type=str, choices=["open", "closed"], default="open",help="Specify the shape class (open, closed).")
+    parser.add_argument("-sc", "--shape_class", type=str, choices=["open", "closed"], default="closed",help="Specify the shape class (open, closed).")
 
     parser.add_argument("-pc", "--primitive_class", type=str, choices=["simple_shape", "any_shape_raster","any_shape_svg", "photo_collage", "wordle"], default="any_shape_raster",
                         help="Specify the primitive class (simple_shape, any_shape, photo_collage, wordle).")

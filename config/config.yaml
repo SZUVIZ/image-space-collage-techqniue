@@ -20,7 +20,7 @@ primitive_pos_init_type: "distance_field" # "distance_field","random_within_shap
 is_global_size: False
 is_rotate: True
 is_rotate_random: False
-primitive_fill_ratio: 0.3
+primitive_fill_ratio: 0.55
 num_iters: 100
 
 svg_normalized_size: 100
