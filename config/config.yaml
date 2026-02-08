@@ -2,7 +2,7 @@
 weights_list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 primitive_pos_init_type: "distance_field" # "distance_field","random_within_shape","medial_axis"
-is_global_size: True # Strictly follow the weight list
+is_global_size: False # Strictly follow the weight list
 is_rotate: True
 is_rotate_random: False
 primitive_fill_ratio: 0.55 # Initial element size percentage
@@ -16,3 +16,4 @@ base_lr:
   size: 0.002
   angle: 0.05
   pos: 0.2
+
