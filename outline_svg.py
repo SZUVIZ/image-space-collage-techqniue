@@ -322,7 +322,7 @@ if __name__ == '__main__':
     parser.add_argument("-c", "--config", type=str,default="./config/config.yaml",help="YAML/YML file for configuration.")
     parser.add_argument("-pc", "--primitive_class", type=str, choices=["any_shape_raster","any_shape_svg"], default="any_shape_raster",
                         help="Specify the primitive class (any_shape_raster,any_shape_svg).")
-
+    parser.add_argument("-pd", "--primitive_dir", type=str,  default="./data/demo_svgs", help="Path to element.")
     args = parser.parse_args()
     args = load_config(args.config,args)
     device = torch.device("cuda:0")

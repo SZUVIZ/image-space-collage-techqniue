@@ -1,26 +1,11 @@
-# 权重列表
-weights_list: [1,1,1] # !repeat [1, n]
-
-multiple: 1
-
-# simple shape
-shape_type: "circle" # "square" or ["circle","square"]
-shape_num: 100  # num1 or [num1, num2]
-
-primitive_dir: "./data/demo_imgs"
-
-photos_dir: "./data/collage_images/example2_Disney/images"
-
-word_file: "./wordle.csv"
-font_path: "./HoboStd.otf"
-word_color: [123,234,111,255]
-max_words_num: 100
+# Element size ratio list
+weights_list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 primitive_pos_init_type: "distance_field" # "distance_field","random_within_shape","medial_axis"
-is_global_size: False
+is_global_size: True # Strictly follow the weight list
 is_rotate: True
 is_rotate_random: False
-primitive_fill_ratio: 0.55
+primitive_fill_ratio: 0.55 # Initial element size percentage
 num_iters: 100
 
 svg_normalized_size: 100

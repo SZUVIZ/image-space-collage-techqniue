@@ -46,6 +46,5 @@ def uniform_loss(mask1,raster_img,diflation_list,scale=1):
         output_image = model(raster_img)*mask1
         loss+=torch.sum(output_image)
         image = ToPILImage()(output_image.detach())
-        image.save(f"{count}.png")
 
     return loss*scale

@@ -25,11 +25,8 @@ class ShapeCollage:
         self.shape_class = args.shape_class
 
         self.primitive_class = args.primitive_class
-        self.shape_type = args.shape_type
-        self.shape_num = args.shape_num
 
         self.weights_list = args.weights_list
-        self.weights_list = [1]*100
 
         self.primitive_num = len(self.weights_list)
 
@@ -49,17 +46,6 @@ class ShapeCollage:
                 self.primitive_uniform_list = [f"{args.primitive_dir}/outline_files/uniform_{i+1}.png" for i in range(self.primitive_num)]
         
 
-
-        self.photos_dir = args.photos_dir
-        self.photo_list = []
-        self.photo_properties_list=[]
-
-        self.word_file = args.word_file
-        self.word_list = []
-        self.font_path = args.font_path
-        self.word_color = args.word_color
-        self.max_words_num = args.max_words_num
-
         self.primitive_mask_img_list = []
         self.primitive_area_list = []
         self.centroid_list = []
@@ -78,6 +64,9 @@ class ShapeCollage:
         self.num_iters = args.num_iters
         if self.shape_class == "open":
             self.num_iters *= 10
+            self.primitive_fill_ratio *= 0.6
+        if args.is_global_size:
+            self.num_iters *= 5
         
         self.base_lr["size"] *= self.render_img_size/100
         self.base_lr["pos"] *= self.render_img_size/100
@@ -377,11 +366,11 @@ class ShapeCollage:
                     self.shapes[i].points = points_2[i]
                 raster_img = svg_to_img(self.shapes,shape_groups,self.render_img_size,self.render_img_size)
 
-                loss_mse = weights_mse(mask_img,raster_img, target_img,scale=3e3)
+                loss_mse = weights_mse(mask_img,raster_img, target_img,scale=5e4)
 
                 # 排斥损失
                 raster_img_transparency = svg_to_img(self.shapes,shape_groups_transparency,self.render_img_size,self.render_img_size)
-                loss_exclude = exclude_loss(raster_img_transparency,scale=8e-1)
+                loss_exclude = exclude_loss(raster_img_transparency,scale=0.5)
 
                 loss_uniform = 0
                 loss_force = 0
@@ -391,7 +380,7 @@ class ShapeCollage:
     
                 elif self.shape_class == "open":
                     loss_uniform = 0
-                    loss_force = force_loss(pos_tensor,"down",3e-1)
+                    loss_force = force_loss(pos_tensor,"down",0.1)
 
 
                 loss = loss_mse+loss_exclude+loss_uniform+loss_force
